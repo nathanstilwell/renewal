@@ -3,13 +3,19 @@ require([
   'lib/renewal'
 ], function ($, Renewal) {
 
-  // A start
+  var
+    demoElement = $('#demo-carousel'),
+    demo = new Renewal(demoElement, {
+      speed: 500,
+      visible: 3
+    });
 
-  // var
-  //   plainCarouselElement = $('#plain-carousel'),
-  //   plainCarousel = new Renewal(plainCarouselElement),
+    $('#prev').on('click', function () {
+      demo.reverse();
+    });
 
-  //   prettyCarouselElement = $('#pretty-carousel'),
-  //   prettyCarousel = new Renewal(prettyCarouselElement);
+    $('#next').on('click', function () {
+      demo.advance();
+    });
 
 });

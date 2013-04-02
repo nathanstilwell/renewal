@@ -8,12 +8,12 @@ body {
   text-align: center;
 }
 
-.title {
+.header .title {
   font-size: 300px;
   margin: 0;
 }
 
-.sub-title {
+.header .sub-title {
   font-size: 100px;
   margin: 0;
 }
@@ -25,4 +25,41 @@ body {
     3px 3px 1px #000,
     4px 4px 1px #000,
     5px 5px 1px #000;
+}
+
+.title {
+  font-size: 40px;
+  margin-left: 40px;
+}
+
+.demonstration {
+  margin: 0 auto;
+}
+
+.carousel-wrapper {
+  margin: 0 auto;
+  width : 1000px;
+}
+
+.resident {
+  float: left;
+  padding: 15px;
+  width: 400px;
+}
+
+.resident img {
+  opacity: .5;
+  -webkit-box-shadow: 5px 5px 25px rgba(0, 0, 0, .85);
+  -moz-box-shadow: 5px 5px 25px rgba(0, 0, 0, .85);
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, .85);
+
+  -webkit-transition: opacity .5s ease;
+  -moz-transition: opacity .5s ease;
+  -ms-transition: opacity .5s ease;
+  -o-transition: opacity .5s ease;
+  transition: opacity .5s ease;
+}
+
+.resident img:hover {
+  opacity: 1;
 }
