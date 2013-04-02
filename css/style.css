@@ -1,0 +1,28 @@
+body {
+  background-color: #222;
+  color: #efefef;
+}
+
+.header {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.title {
+  font-size: 300px;
+  margin: 0;
+}
+
+.sub-title {
+  font-size: 100px;
+  margin: 0;
+}
+
+.title-shadow {
+  text-shadow :
+    1px 1px 1px #000,
+    2px 2px 1px #000,
+    3px 3px 1px #000,
+    4px 4px 1px #000,
+    5px 5px 1px #000;
+}
