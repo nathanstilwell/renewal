@@ -1,5 +1,9 @@
-describe("Renewal", function () {
+/*global describe: false, it: false, expect: false, waits: false, beforeEach: false, runs: false */
+/*global loadFixtures: false, $: false, spyOn: false, define: false */
 
+define(['lib/renewal'], function (Renewal) {
+
+describe("Renewal", function () {
   var
     calculateElementWidth = function (el) {
       var marginLeft = parseInt(el.css('marginLeft'), 10),
@@ -13,7 +17,7 @@ describe("Renewal", function () {
       beforeEach(function () {
         loadFixtures('fixture.html');
         this.element = $('#carousel');
-        this.element.renewal();
+        this.element.data('carousel', new Renewal(this.element));
       });
 
       it('should have a carousel data key', function () {
@@ -150,8 +154,8 @@ describe("Renewal", function () {
           });
 
           it('should move at any speed it would like to', function () {
-            var movement = this.carousel.moveTo(1, 500);
-            waits(505);
+            this.carousel.moveTo(1, 500);
+            waits(1000);
             runs(function () {
               expect(this.element.css('left')).toEqual('-70px');
             });
@@ -193,7 +197,7 @@ describe("Renewal", function () {
           it('should advance the left position by two item widths', function () {
             var firstItem = this.element.children(':first'),
                 secondItem = this.element.children().eq(1),
-                firstItemWidth = calculateElementWidth(firstItem);
+                firstItemWidth = calculateElementWidth(firstItem),
                 secondItemWidth = calculateElementWidth(secondItem);
             this.carousel.advance(2);
             waits(this.DEFAULT_SPEED);
@@ -315,10 +319,10 @@ describe("Renewal", function () {
     beforeEach(function () {
       loadFixtures('fixture.html');
       this.element = $('#carousel');
-      this.element.renewal({
+      this.element.data('carousel', new Renewal(this.element, {
         speed: 0,
         visible: null
-      });
+      }));
       this.carousel = this.element.data('carousel');
     });
 
@@ -337,10 +341,10 @@ describe("Renewal", function () {
     beforeEach(function () {
       loadFixtures('fixture.html');
       this.element = $('#carousel');
-      this.element.renewal({
+      this.element.data('carousel', new Renewal(this.element, {
         start: 1,
         speed: 0
-      });
+      }));
       this.carousel = this.element.data('carousel');
     });
 
@@ -354,3 +358,5 @@ describe("Renewal", function () {
   });
 
 });
+
+}); // require

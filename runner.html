@@ -8,22 +8,24 @@
   <script src="vendor/jasmine/jasmine.js"></script>
   <script src="vendor/jasmine/jasmine-jquery.js"></script>
   <script src="vendor/jasmine/jasmine-html.js"></script>
-  <script>
-  var require = {
-    // Put your config in here!
-  }
-  </script>
+
   <script src="vendor/require.js"></script>
 </head>
 <body>
 
   <div id="jasmine-fixtures"></div>
 
+
 <script>
+  require.config({
+    paths : {
+      jquery : 'vendor/jquery'
+    }
+  });
+
   jasmine.getFixtures().fixturesPath = './spec';
-  
-  require(['spec/renewalSpec'],
-  function() {
+
+  require(['spec/renewalSpec'], function() {
     jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
     jasmine.getEnv().execute();
   });
