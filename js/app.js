@@ -4,18 +4,24 @@ require([
 ], function ($, Renewal) {
 
   var
-    demoElement = $('#demo-carousel'),
-    demo = new Renewal(demoElement, {
+    slideshow = $('#slideshow'),
+    demoElement = slideshow.find('.carousel'),
+    carousel = new Renewal(demoElement, {
       speed: 500,
       visible: 3
+    }),
+    prev = slideshow.find('.prev'),
+    next = slideshow.find('.next'),
+    maxPosition = carousel.length - carousel.getConfig().visible;
+
+    prev.on('click', function () {
+      carousel.reverse(1);
     });
 
-    $('#prev').on('click', function () {
-      demo.reverse();
-    });
-
-    $('#next').on('click', function () {
-      demo.advance();
+    next.on('click', function () {
+      if (carousel.getPosition() < maxPosition) {
+        carousel.advance(1);
+      }
     });
 
 });

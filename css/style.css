@@ -32,19 +32,90 @@ body {
   margin-left: 40px;
 }
 
+.logan-quote {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-style: italic;
+  letter-spacing: 2px;
+  padding: 60px;
+}
+
+.description {
+  font-size: 24px;
+  padding: 35px;
+}
+
+.description a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px black;
+  -webkit-transition: color .25s ease;
+  -moz-transition: color .25s ease;
+  -ms-transition: color .25s ease;
+  -o-transition: color .25s ease;
+  transition: color .25s ease;
+}
+
+.description a:hover {
+  color: blue;
+}
+
+
 .demonstration {
   margin: 0 auto;
 }
 
-.carousel-wrapper {
+.slideshow {
   margin: 0 auto;
-  width : 1000px;
+  position: relative;
+  width : 850px;
+}
+
+.slideshow .button {
+  background-color: transparent;
+  border: none;
+  margin-top: -35px;
+  opacity: .45;
+  position: absolute;
+  top: 50%;
+  width: 75px;
+  -webkit-transition: opacity .25s ease-in;
+  -moz-transition: opacity .25s ease-in;
+  -ms-transition: opacity .25s ease-in;
+  -o-transition: opacity .25s ease-in;
+  transition: opacity .25s ease-in;
+}
+
+.slideshow:hover .button {
+  opacity: .65;
+}
+
+.slideshow:hover .button:hover {
+  opacity: 1;
+}
+
+.slideshow .prev {
+  left: 0;
+}
+
+.slideshow .next {
+  right: 0;
+}
+
+.slideshow .button img {
+  width: 100%;
+}
+
+.carousel-frame {
+  background-color: #222;
+  margin: 0 auto;
 }
 
 .resident {
   float: left;
   padding: 15px;
-  width: 400px;
+  width: 200px;
 }
 
 .resident img {
@@ -58,6 +129,8 @@ body {
   -ms-transition: opacity .5s ease;
   -o-transition: opacity .5s ease;
   transition: opacity .5s ease;
+
+  width: 100%;
 }
 
 .resident img:hover {
