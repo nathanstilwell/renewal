@@ -1,7 +1,7 @@
 /*global describe: false, it: false, expect: false, waits: false, beforeEach: false, runs: false */
 /*global loadFixtures: false, $: false, spyOn: false, define: false */
 
-define(['lib/renewal'], function (Renewal) {
+define(['renewal'], function (Renewal) {
 
 describe("Renewal", function () {
   var
