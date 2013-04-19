@@ -6,8 +6,17 @@ define(['../lib/renewal'], function (Renewal) {
 describe("Renewal", function () {
   var
     calculateElementWidth = function (el) {
-      var marginLeft = parseInt(el.css('marginLeft'), 10),
-          marginRight = parseInt(el.css('marginRight'), 10);
+      var
+        cssMarginLeft,
+        marginLeft,
+        cssMarginRight,
+        marginRight;
+
+      cssMarginLeft = el.css('marginLeft');
+      cssMarginRight = el.css('marginRight');
+      marginLeft = (cssMarginLeft !== 'auto') ? parseInt(cssMarginLeft, 10) : 0;
+      marginRight = (cssMarginRight !== 'auto') ? parseInt(cssMarginRight, 10) : 0;
+
       return el.outerWidth() + marginLeft + marginRight;
     };
 
@@ -136,7 +145,7 @@ describe("Renewal", function () {
 
           it('should move the left position of the element', function () {
             this.carousel.moveTo(2, 0);
-            expect(this.element.css('left')).toEqual('-140px');
+            expect(this.element.css('left')).toEqual('-100px');
           });
 
           it('should be chaninable', function () {
@@ -155,9 +164,9 @@ describe("Renewal", function () {
 
           it('should move at any speed it would like to', function () {
             this.carousel.moveTo(1, 500);
-            waits(1000);
+            waits(2000);
             runs(function () {
-              expect(this.element.css('left')).toEqual('-70px');
+              expect(this.element.css('left')).toEqual('-50px');
             });
           });
         });
@@ -307,6 +316,7 @@ describe("Renewal", function () {
               expect(this.carousel.reverse()).toEqual(this.carousel);
             });
           });
+
         });
 
       });
@@ -353,7 +363,7 @@ describe("Renewal", function () {
     });
 
     it('should start the carousel at that point', function () {
-      expect(this.element.css('left')).toEqual('-70px');
+      expect(this.element.css('left')).toEqual('-50px');
     });
   });
 
