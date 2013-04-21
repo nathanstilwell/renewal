@@ -1,7 +1,7 @@
 {
   "name": "renewal",
   "author": "Nathan Stilwell",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.3.1",
