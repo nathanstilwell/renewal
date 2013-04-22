@@ -7,15 +7,8 @@ describe("Renewal", function () {
   var
     calculateElementWidth = function (el) {
       var
-        cssMarginLeft,
-        marginLeft,
-        cssMarginRight,
-        marginRight;
-
-      cssMarginLeft = el.css('marginLeft');
-      cssMarginRight = el.css('marginRight');
-      marginLeft = (cssMarginLeft !== 'auto') ? parseInt(cssMarginLeft, 10) : 0;
-      marginRight = (cssMarginRight !== 'auto') ? parseInt(cssMarginRight, 10) : 0;
+        marginLeft = parseInt(el.css('marginLeft'), 10) || 0,
+        marginRight = parseInt(el.css('marginRight'), 10) || 0;
 
       return el.outerWidth() + marginLeft + marginRight;
     };
