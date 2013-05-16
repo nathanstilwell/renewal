@@ -1,0 +1,106 @@
+.sliding-carousel-wrapper-frame,
+.active-carousel-wrapper-frame {
+  box-shadow: 0 0 5px rgba(0, 0, 0, .35);
+  height: 420px;
+  margin: 100px auto 0;
+  position: relative;
+  width: 420px;
+}
+
+.sliding-carousel-wrapper-frame .control,
+.active-carousel-wrapper-frame .control {
+  bottom: -30px;
+  position: absolute;
+}
+
+.sliding-carousel-wrapper-frame .prev,
+.active-carousel-wrapper-frame .prev {
+  left: 100px;
+}
+
+.sliding-carousel-wrapper-frame .next,
+.active-carousel-wrapper-frame .next {
+  right: 100px;
+}
+
+.sliding-carousel-wrapper,
+.active-carousel-wrapper {
+  border: 1px solid #ddd;
+  height: 400px;
+  left: 10px;
+  overflow: hidden;
+  position: relative;
+  top: 10px;
+  width: 400px;
+}
+
+.sliding-carousel {
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.sliding-carousel-item {
+  float: left;
+  height: 400px;
+  width: 400px;
+}
+
+
+.sliding-carousel .ninja,
+.active-carousel .ninja,
+.sliding-carousel .angle-brackets,
+.active-carousel .angle-brackets,
+.sliding-carousel .curly-brackets,
+.active-carousel .curly-brackets {
+  background: transparent url(../img/cats.jpg) no-repeat 0 0;
+  background-size: cover;
+}
+
+.svg .sliding-carousel .ninja,
+.svg .active-carousel .ninja {
+  background: transparent url(../img/ninja.svg) no-repeat 0 0;
+  background-size: cover;
+}
+
+.svg .sliding-carousel .angle-brackets,
+.svg .active-carousel .angle-brackets {
+  background: transparent url(../img/angle-brackets.svg) no-repeat 0 0;
+  background-size: cover;
+}
+
+.svg .sliding-carousel .curly-brackets,
+.svg .active-carousel .curly-brackets {
+  background: transparent url(../img/curly-brackets.svg) no-repeat 0 0;
+  background-size: cover;
+}
+
+
+.active-carousel {
+  position: relative;
+}
+
+.active-carousel-item {
+  height: 400px;
+  width: 400px;
+}
+
+.active-carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.active-carousel-item.active {
+  opacity: 1;
+  visibility: visible;
+}

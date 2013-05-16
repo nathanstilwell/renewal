@@ -2,12 +2,64 @@
 <html>
 <head lang="en">
   <meta charset="utf-8"/>
-  <title>test</title>
-  <script src="vendor/jquery.js"></script>
-  <script src="lib/renewal.js"></script>
+  <title>Renewal Test</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/vendor/modernizr.js"></script>
 </head>
 <body>
 
-  <script src="vendor/require.js"></script>
+  <!-- Sliding -->
+  <div class="sliding-carousel-wrapper-frame">
+    <section class="sliding-carousel-wrapper">
+      <section id="sliding-carousel" class="sliding-carousel">
+        <article class="sliding-carousel-item ninja"></article>
+        <article class="sliding-carousel-item angle-brackets"></article>
+        <article class="sliding-carousel-item curly-brackets"></article>
+      </section>
+    </section>
+
+    <div class="controls">
+      <button id="slide-prev" class="control prev">↫</button>
+      <button id="slide-next" class="control next">↬</button>
+    </div>
+  </div>
+
+  <!-- Fading / Activation -->
+  <div class="active-carousel-wrapper-frame">
+    <section class="active-carousel-wrapper">
+      <section id="active-carousel" class="active-carousel">
+        <article class="active-carousel-item ninja"></article>
+        <article class="active-carousel-item angle-brackets"></article>
+        <article class="active-carousel-item curly-brackets"></article>
+      </section>
+    </section>
+
+    <div class="controls">
+      <button id="active-prev" class="control prev">↫</button>
+      <button id="active-next" class="control next">↬</button>
+    </div>
+  </div>
+
+
+  <script src="vendor/jquery.js"></script>
+  <script src="lib/renewal.js"></script>
+  <script>
+    (function () {
+      var slidingCarousel = new Renewal(document.getElementById('sliding-carousel'), {
+        start : 2
+      });
+
+      $('#slide-prev').on('click', function () { slidingCarousel.reverse(); });
+      $('#slide-next').on('click', function () { slidingCarousel.advance(); });
+
+      var activeCarousel = new Renewal(document.getElementById('active-carousel'), {
+        transition: 'active'
+      });
+
+      $('#active-prev').on('click', function () { activeCarousel.reverse(); });
+      $('#active-next').on('click', function () { activeCarousel.advance(); });
+
+    }())
+  </script>
 </body>
 </html>
