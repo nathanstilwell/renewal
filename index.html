@@ -2,12 +2,50 @@
 <html>
 <head lang="en">
   <meta charset="utf-8"/>
-  <title>test</title>
-  <script src="vendor/jquery.js"></script>
-  <script src="lib/renewal.js"></script>
+  <title>Renewal Test</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="vendor/modernizr.js"></script>
+
 </head>
 <body>
 
-  <script src="vendor/require.js"></script>
+  <div class="sliding-carousel-wrapper-frame">
+    <section class="sliding-carousel-wrapper">
+      <section id="sliding-carousel" class="sliding-carousel">
+        <article class="sliding-carousel-item ninja"></article>
+        <article class="sliding-carousel-item angle-brackets"></article>
+        <article class="sliding-carousel-item curly-brackets"></article>
+      </section>
+    </section>
+
+    <div class="controls">
+      <button id="slide-prev" class="control prev">↫</button>
+      <button id="slide-next" class="control next">↬</button>
+    </div>
+  </div>
+
+
+  <script src="vendor/jquery.js"></script>
+  <script src="lib/renewal.js"></script>
+  <script>
+
+  (function(){
+    var
+      element = $('#sliding-carousel'),
+      carousel = new Renewal(element, {
+        preferCSSTransform: true,
+        start: 2
+      });
+
+    element.on('renewal.moving renewal.move renewal.moved', function afterMove (e) {
+      console.log(e.type + '.' + e.namespace);
+    });
+
+    $('#slide-prev').on('click', function () { carousel.reverse(); });
+    $('#slide-next').on('click', function () { carousel.advance(); });
+
+  }());
+
+  </script>
 </body>
 </html>

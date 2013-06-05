@@ -1,9 +1,9 @@
-/*global describe: false, it: false, expect: false, waits: false, beforeEach: false, runs: false */
+/*global describe: false, it: false, expect: false, waits: false, beforeEach: false, runs: false, document: false */
 /*global loadFixtures: false, $: false, spyOn: false, define: false */
 
 define(['../lib/renewal'], function (Renewal) {
 
-describe("Renewal", function () {
+describe("Renewal Spec", function () {
   var
     calculateElementWidth = function (el) {
       var
@@ -11,7 +11,13 @@ describe("Renewal", function () {
         marginRight = parseInt(el.css('marginRight'), 10) || 0;
 
       return el.outerWidth() + marginLeft + marginRight;
-    };
+    },
+    featureTestElement = document.createElement('i'),
+    transform = (typeof featureTestElement.style.transform !== 'undefined') && 'transform' ||
+                (typeof featureTestElement.style.webkitTransform !== 'undefined') && 'webkitTransform' ||
+                (typeof featureTestElement.style.MozTransform !== 'undefined') && 'MozTranform' ||
+                (typeof featureTestElement.style.OTransform !== 'undefined') && 'OTransform' ||
+                (typeof featureTestElement.style.msTransform !== 'undefined') && 'msTransform';
 
   describe('Default configuration', function () {
 
@@ -91,13 +97,10 @@ describe("Renewal", function () {
           expect(el).toBe(this.element);
         });
 
-        it('should trigger movement', function () {
-          var el;
-          this.element.bind(this.EVENT_MOVE, function (e) {
-            el = $(e.target);
-          });
-          this.carousel.moveTo(1, 0);
-          expect(el).toBe(this.element);
+        it('should move when triggered', function () {
+          spyOn(this.carousel, 'moveTo');
+          this.element.trigger(this.EVENT_MOVE, [1, 0]);
+          expect(this.carousel.moveTo).toHaveBeenCalled();
         });
 
       });
@@ -162,7 +165,7 @@ describe("Renewal", function () {
               expect(this.element.css('left')).toEqual('-50px');
             });
           });
-        });
+        }); // # moveTo
 
         describe('#advance', function () {
           beforeEach(function () {
@@ -241,7 +244,7 @@ describe("Renewal", function () {
             });
           });
 
-        });
+        }); // # advance
 
         describe('#reverse', function () {
           beforeEach(function () {
@@ -310,13 +313,13 @@ describe("Renewal", function () {
             });
           });
 
-        });
+        }); // # reverse
 
-      });
+      }); // Renewal
 
-    });
+    }); // jQuery Element
 
-  });
+  }); // Default Configuration
 
   describe('Overriding configuration', function () {
     beforeEach(function () {
@@ -360,6 +363,24 @@ describe("Renewal", function () {
     });
   });
 
-});
+  describe('Use CSS Transforms', function () {
+    beforeEach(function () {
+      loadFixtures('fixture.html');
+      this.element = $('#carousel');
+      this.element.data('carousel', new Renewal(this.element, {
+        preferCSSTransform: true
+      }));
+      this.carousel = this.element.data('carousel');
+    });
+
+    it('should move using transforms if supported', function () {
+      this.carousel.advance();
+      expect(this.element.get(0).style[transform]).toEqual('translateX(-50px)');
+      this.carousel.reverse();
+      expect(this.element.get(0).style[transform]).toEqual('translateX(0px)');
+    });
+  });
+
+}); // Renewal Spec
 
 }); // require
